@@ -14,7 +14,7 @@ export default function Login() {
 		try {
 			setLoading(true);
 			const res = await axios.post(
-				"api/user/login",
+				"https://lockandkey.onrender.com/api/user/login",
 				{
 					email: emailRef.current.value,
 					password: passwordRef.current.value,

@@ -15,6 +15,7 @@ const isLoggedin = async function (req, res, next) {
 	try {
 		// Get corresponding cookie, and throw error if does'nt exits
 		const token = req.cookies.engage_jwt;
+		console.log(token);
 		if (!token) throw new Error("Please Login");
 
 		// Verify cookie signature, and query db if user exists

@@ -77,7 +77,7 @@ const ImageSelect = () => {
           }
           setLoading(true);
           const res = await axios.post(
-            "api/user/imgauth",
+            "https://lockandkey.onrender.com/api/user/imgauth",
             {
               img_secret: picturePattern,
               img_url: imageSelect,

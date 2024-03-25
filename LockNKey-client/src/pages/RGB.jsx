@@ -56,7 +56,7 @@ const RGB = () => {
       }
       setLoading(true);
       const res = await axios.post(
-        "api/user/colorauth",
+        "https://lockandkey.onrender.com/api/user/colorauth",
         {
           color_secret: pattern,
         },
@@ -74,7 +74,7 @@ const RGB = () => {
       setLoading(false);
       setTimeout(() => {
         localStorage.setItem("user", JSON.stringify(res.data.user))
-        navigate("/dashboard");
+        window.location.href = "/dashboard";
       }, 2000);
     } catch (err) {
       toast({
