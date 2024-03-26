@@ -65,6 +65,7 @@ export default function Signup() {
 				}
 			);
 			setLoading(false);
+            localStorage.setItem("userToken", res.data.token);
             toast({
                 title: 'Success',
                 description: "Success",
