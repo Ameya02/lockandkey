@@ -4,6 +4,5 @@ import Img3 from "../assets/img3.jpg";
 import Img4 from "../assets/img4.jpg";
 
 const API_URL = import.meta.env.VITE_API_URL;
-console.log(API_URL);
 
 export {Img1, Img2,Img3,Img4, API_URL} 
