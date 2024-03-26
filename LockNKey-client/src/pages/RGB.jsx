@@ -83,7 +83,7 @@ const RGB = () => {
       setLoading(false);
       setTimeout(() => {
         localStorage.setItem("user", JSON.stringify(res.data.user))
-        window.location.href = "/dashboard";
+        navigate("/dashboard")
       }, 2000);
     } catch (err) {
       toast({
