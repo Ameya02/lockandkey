@@ -3,6 +3,7 @@ import axios from "axios";
 import  { useRef, useState } from "react";
 import { useToast } from '@chakra-ui/react'
 import { Link, useNavigate } from "react-router-dom";
+import { API_URL } from "../utils/data";
 export default function Signup() {
     const toast = useToast()
     const navigate = useNavigate();
@@ -33,7 +34,6 @@ export default function Signup() {
       };
 
     const handlePassword = (e) => {
-        console.log(e.target.value)
         if (e.target.value !== passwordRef.current.value) {
             setCheckPassword(1);
           } else {
@@ -55,7 +55,7 @@ export default function Signup() {
                 
             }
 			const res = await axios.post(
-				"api/user/signup",
+				API_URL+"api/user/signup",
 				{
 					email: emailRef.current.value,
 					password: passwordRef.current.value,

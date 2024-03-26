@@ -9,12 +9,6 @@ export default defineConfig({
         usePolling: true,
       },
     port: 3000,
-    proxy: {
-      '/api': {
-        target: 'https://lockandkey.onrender.com/',
-       
-      }
-    }
   }
 
 })

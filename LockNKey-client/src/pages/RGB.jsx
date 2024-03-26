@@ -2,6 +2,7 @@ import { useToast } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../utils/data";
 
 const RGB = () => {
   const navigate = useNavigate();
@@ -55,11 +56,19 @@ const RGB = () => {
         return ;
       }
       setLoading(true);
+      const token = localStorage.getItem("userToken");
+      const config = {
+        headers : {
+            "Content-Type":"application/json",
+            Authorization:`Bearer ${token}`,
+        },
+      }
       const res = await axios.post(
-        "https://lockandkey.onrender.com/api/user/colorauth",
+        API_URL+"/api/user/colorauth",
         {
           color_secret: pattern,
         },
+        config,
         {
           withCredentials: true,
         }

@@ -6,6 +6,7 @@ import Img4 from "../assets/img4.jpg";
 import { useToast } from '@chakra-ui/react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { API_URL } from '../utils/data';
 const ImageSelect = () => {
     const toast = useToast();
     const [pictureGrid, setPictureGrid] = useState({});
@@ -75,17 +76,28 @@ const ImageSelect = () => {
             });
             return ;
           }
+          const token = localStorage.getItem("userToken");
+          const config = {
+            headers : {
+                "Content-Type":"application/json",
+                Authorization:`Bearer ${token}`,
+            },
+          }
           setLoading(true);
+          
           const res = await axios.post(
-            "https://lockandkey.onrender.com/api/user/imgauth",
+
+            API_URL+"/api/user/imgauth",
             {
               img_secret: picturePattern,
               img_url: imageSelect,
             },
+            config,
             {
               withCredentials: true,
             }
           );
+          localStorage.setItem("userToken", res.data.token);
           toast({
             title: "Success",
             description: "Success",

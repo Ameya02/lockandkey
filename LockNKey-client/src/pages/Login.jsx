@@ -3,6 +3,7 @@ import { useToast } from '@chakra-ui/react';
 import axios from 'axios';
 import React, { useRef, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
+import { API_URL } from '../utils/data';
 export default function Login() {
     const toast = useToast()
     const navigate = useNavigate();
@@ -14,7 +15,7 @@ export default function Login() {
 		try {
 			setLoading(true);
 			const res = await axios.post(
-				"https://lockandkey.onrender.com/api/user/login",
+				API_URL+"/api/user/login",
 				{
 					email: emailRef.current.value,
 					password: passwordRef.current.value,
@@ -23,6 +24,7 @@ export default function Login() {
 					withCredentials: true,
 				}
 			);
+            localStorage.setItem("userToken", res.data.token);
             toast({
                 title: 'Success',
                 description: "Authenticated Successfully",
